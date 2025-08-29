@@ -26,8 +26,7 @@ export const MAIN_NAV: NavItem[] = [
 ];
 
 export const SOURCE_CODE_GITHUB_REPO = "nandanNM/codernandan.in";
-export const SOURCE_CODE_GITHUB_URL =
-  "https://github.com/nandanNM/codernandan.com";
+export const SOURCE_CODE_GITHUB_URL = "https://github.com/nandanNM";
 
 export const UTM_PARAMS = {
   utm_source: "codernandan.in",
