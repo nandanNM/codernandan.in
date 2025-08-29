@@ -1,7 +1,7 @@
 export const USER = {
   firstName: "Nándán",
   lastName: "Mạnnạ",
-  displayName: "Nándán Mạnnạ",
+  displayName: "Nándán",
   username: "codernandan",
   gender: "male",
   pronouns: "he/him",
