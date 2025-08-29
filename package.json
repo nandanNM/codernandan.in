@@ -11,8 +11,8 @@
   },
   "contributors": [
     {
-      "name": "Nguyen Chanh Dai",
-      "email": "dai@codernandan.in",
+      "name": "Nanddan Manna",
+      "email": "codernandan@gmail.com",
       "url": "https://github.com/nandanNM"
     }
   ],
@@ -38,6 +38,7 @@
   "dependencies": {
     "@bprogress/next": "^3.2.12",
     "@hookform/resolvers": "^4.1.0",
+    "@next/third-parties": "^15.5.2",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",

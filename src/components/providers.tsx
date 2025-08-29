@@ -1,6 +1,7 @@
 "use client";
 
 import { AppProgressProvider } from "@bprogress/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { LazyMotion } from "motion/react";
@@ -34,6 +35,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <Toaster />
       <Analytics />
       <SpeedInsights />
+      <GoogleAnalytics gaId="G-XSRMVN6E43" />
     </ThemeProvider>
   );
 }
