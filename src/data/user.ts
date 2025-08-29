@@ -59,6 +59,8 @@ Let’s connect and build something amazing together!
       alt: "nandan-puri",
     },
   ],
+  description:
+    "Software Engineer with 4 years of software engineering experience in startups and a strong foundation in coding and design principles, with a focus on building efficient, intuitive digital experiences and a passion for turning complex challenges into elegant solutions.",
   keywords:
     "codernandan, codernandanin, coder nandan manna, nandan, manna nandan, manna, coder Nándán Mạnnạ, Nándán Mạnnạ ,Nandan Manna, coder nandan",
   dateCreated: "2024-10-20", // YYYY-MM-DD
