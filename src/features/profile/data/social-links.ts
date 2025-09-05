@@ -32,4 +32,10 @@ export const SOCIAL_LINKS: SocialLink[] = [
     description: "@codernandan",
     href: "https://www.youtube.com/@codernandan",
   },
+  {
+    icon: "https://assets.codernandan.in/images/link-icons/liquid-glass/facebook.webp",
+    title: "Facebook",
+    description: "codernandan",
+    href: "https://www.facebook.com/codernandan",
+  },
 ];
