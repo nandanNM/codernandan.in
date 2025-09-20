@@ -1,7 +1,26 @@
 import dayjs from "dayjs";
 
 import { SITE_INFO } from "@/config/site";
-import { getAllPosts } from "@/data/blog";
+import { getAllPosts } from "@/features/blog/data/posts";
+
+function escapeXml(unsafe: string): string {
+  return unsafe.replace(/[<>&"']/g, (c) => {
+    switch (c) {
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case "&":
+        return "&amp;";
+      case '"':
+        return "&quot;";
+      case "'":
+        return "&apos;";
+      default:
+        return c;
+    }
+  });
+}
 
 export const dynamic = "force-static";
 
@@ -12,9 +31,9 @@ export function GET() {
     .map(
       (post) =>
         `<item>
-          <title>${post.metadata.title}</title>
+          <title>${escapeXml(post.metadata.title)}</title>
           <link>${SITE_INFO.url}/blog/${post.slug}</link>
-          <description>${post.metadata.description || ""}</description>
+          <description>${escapeXml(post.metadata.description || "")}</description>
           <pubDate>${dayjs(post.metadata.createdAt).toISOString()}</pubDate>
         </item>`
     )
@@ -23,9 +42,9 @@ export function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
     <channel>
-      <title>Blog | ${SITE_INFO.name}</title>
+      <title>${escapeXml(`Blog | ${SITE_INFO.name}`)}</title>
       <link>${SITE_INFO.url}</link>
-      <description>${SITE_INFO.description}</description>
+      <description>${escapeXml(SITE_INFO.description)}</description>
       ${itemsXml}
     </channel>
   </rss>`;
