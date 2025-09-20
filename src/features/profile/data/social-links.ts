@@ -33,9 +33,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
     href: "https://www.youtube.com/@codernandan",
   },
   {
-    icon: "https://assets.codernandan.in/images/link-icons/liquid-glass/facebook.webp",
-    title: "Facebook",
+    icon: "https://assets.codernandan.in/images/link-icons/liquid-glass/leetcode.webp",
+    title: "Leet Code",
     description: "codernandan",
-    href: "https://www.facebook.com/codernandan",
+    href: "https://leetcode.com/u/codernandan",
   },
 ];
