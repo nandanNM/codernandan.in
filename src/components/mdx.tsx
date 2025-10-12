@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils";
 import type { NpmCommands } from "@/types/unist";
 
 import { CopyButton } from "./copy-button";
+import { FramedImage, YouTubeEmbed } from "./embed";
 import { getIconForLanguageExtension, Icons } from "./icons";
 
 const components: MDXRemoteProps["components"] = {
@@ -114,6 +115,8 @@ const components: MDXRemoteProps["components"] = {
       {children}
     </div>
   ),
+  YouTubeEmbed,
+  FramedImage,
 };
 
 const options: MDXRemoteProps["options"] = {

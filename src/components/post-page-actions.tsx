@@ -1,5 +1,3 @@
-// Thanks @fumadocs
-
 "use client";
 
 import {
@@ -8,8 +6,11 @@ import {
   CopyIcon,
   TriangleAlertIcon,
 } from "lucide-react";
+import { AnimatePresence } from "motion/react";
+import * as motion from "motion/react-m";
 import { useMemo, useOptimistic, useTransition } from "react";
 
+import { motionIconProps } from "@/components/copy-button";
 import { cn } from "@/lib/utils";
 
 import { Icons } from "./icons";
@@ -23,25 +24,20 @@ import {
 
 const cache = new Map<string, string>();
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
-  const [state, setState] = useOptimistic<
-    "idle" | "fetching" | "copied" | "failed"
-  >("idle");
+  const [state, setState] = useOptimistic<"idle" | "copied" | "failed">("idle");
   const [, startTransition] = useTransition();
 
   const handleCopy = () => {
     startTransition(async () => {
       try {
+        setState("copied");
+
         const cached = cache.get(markdownUrl);
         if (cached) {
           await navigator.clipboard.writeText(cached);
-          setState("copied");
           return;
         }
-
-        setState("fetching");
 
         await navigator.clipboard.write([
           new ClipboardItem({
@@ -53,30 +49,35 @@ export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
               }),
           }),
         ]);
-
-        setState("copied");
       } catch {
         setState("failed");
+      } finally {
+        await new Promise((resolve) => setTimeout(resolve, 1500));
       }
-
-      await delay(2000);
     });
   };
 
   return (
     <button
-      className="flex h-7 items-center gap-2 rounded-l-full pr-2 pl-2.5 text-sm font-medium disabled:pointer-events-none disabled:opacity-50"
-      disabled={state === "fetching"}
+      className="flex h-7 items-center gap-1.5 rounded-l-full pr-2 pl-2.5 text-sm font-medium disabled:pointer-events-none disabled:opacity-50"
       onClick={handleCopy}
     >
-      {state === "copied" ? (
-        <CheckIcon />
-      ) : state === "failed" ? (
-        <TriangleAlertIcon />
-      ) : (
-        <CopyIcon />
-      )}
-      Page
+      <AnimatePresence mode="popLayout" initial={false}>
+        {state === "idle" ? (
+          <motion.span key="idle" {...motionIconProps}>
+            <CopyIcon />
+          </motion.span>
+        ) : state === "copied" ? (
+          <motion.span key="copied" {...motionIconProps}>
+            <CheckIcon strokeWidth={3} />
+          </motion.span>
+        ) : state === "failed" ? (
+          <motion.span key="failed" {...motionIconProps}>
+            <TriangleAlertIcon />
+          </motion.span>
+        ) : null}
+      </AnimatePresence>
+      MDX
     </button>
   );
 }
