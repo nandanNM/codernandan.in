@@ -57,7 +57,7 @@ export const EXPERIENCES: Experience[] = [
   //   {
   //     id: "tungtung",
   //     companyName: "Tung Tung JSC",
-  //     companyLogo: "https://assets.codernandan.inhttps://assets.codernandan.in/images/companies/tungtung.webp",
+  //     companyLogo: "https://assets.codernandan.in/images/companies/tungtung.webp",
   //     positions: [
   //       {
   //         id: "3e831244-8d8c-41e2-b2ce-7f3946956afd",
@@ -123,6 +123,43 @@ export const EXPERIENCES: Experience[] = [
   //       },
   //     ],
   //   },
+
+  {
+    id: "sparks-sphere",
+    companyName: "Sparks Sphere Softwares",
+    companyLogo:
+      "https://assets.codernandan.in/images/companies/sparks-sphere.webp",
+    positions: [
+      {
+        id: "a3c4b5f6-d7e8-49a1-9b10-11c12d13e14f",
+        title: "Software Engineer — Internship",
+
+        employmentPeriod: {
+          start: "Jul 2025",
+          end: "Oct 2025",
+        },
+        employmentType: "Internship",
+
+        description: `- Developed a B2B salon management platform with integrated inventory and order tracking features.  
+- Implemented scalable frontend modules using Next.js and React.js, with Redux Toolkit and Redux Saga for state management.  
+- Built secure RESTful APIs with Express.js and Prisma ORM for managing salon branches, products, and stock operations.  
+- Worked on real-time data synchronization between dashboard views for smooth multi-branch management.  
+- Collaborated in an agile remote team, ensuring clean code practices and optimized SQL database performance.`,
+        icon: "code",
+        skills: [
+          "B2B Platform Development",
+          "Next.js",
+          "React.js",
+          "Redux Toolkit",
+          "Redux Saga",
+          "Express.js",
+          "SQL",
+          "Prisma ORM",
+          "Inventory Management",
+        ],
+      },
+    ],
+  },
   {
     id: "freelance",
     companyName: "Freelance",
@@ -132,6 +169,7 @@ export const EXPERIENCES: Experience[] = [
         title: "Full-Stack Developer — Exam Portal",
         employmentPeriod: {
           start: "2024",
+          end: "2025",
         },
         employmentType: "Freelance",
         description: `- Developed an online exam portal for students.  
@@ -155,7 +193,7 @@ export const EXPERIENCES: Experience[] = [
         id: "0eecdfcb-028d-41f4-93e9-1269ba7eff7e",
         title: "Full-Stack Developer — Hostel Management System",
         employmentPeriod: {
-          start: "2024",
+          start: "2025",
         },
         employmentType: "Freelance",
         description: `- Built a full-featured hostel management system to manage meals, payments, and attendance.  

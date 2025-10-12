@@ -2,6 +2,27 @@ import type { Certification } from "../types/certifications";
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    title: "Oracle DevOps Professional Certificate",
+    issuer: "Oracle",
+    issuerLogoURL: "https://assets.codernandan.in/images/companies/oracle.webp",
+    issuerIconName: "oracle",
+    issueDate: "2025-10-25",
+    credentialID: "102510017OCI25DOPOCP",
+    credentialURL:
+      "https://drive.google.com/file/d/1E-ZL-0Rh43aCjNCjtQsWgftQg5U5tZxM/view?usp=drive_link",
+  },
+  {
+    title: "Java (Basic) — Verified by HackerRank",
+    issuer: "HackerRank",
+    issuerLogoURL:
+      "https://assets.codernandan.in/images/companies/hacker-rank.webp",
+    issuerIconName: "hacker-rank",
+    issueDate: "2025-10-25",
+    credentialID: "32A9435CEDA1",
+    credentialURL:
+      "https://drive.google.com/file/d/16A-yY9GNFlcruX03mLNwfPczMFRzwTCG/view?usp=drive_link",
+  },
+  {
     title: "Oracle Cloud Infrastructure Generative AI Professional",
     issuer: "Oracle",
     issuerLogoURL: "https://assets.codernandan.in/images/companies/oracle.webp",
