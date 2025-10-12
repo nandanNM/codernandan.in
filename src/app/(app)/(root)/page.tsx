@@ -8,6 +8,7 @@ import { Blog } from "@/features/profile/components/blog";
 import { Certifications } from "@/features/profile/components/certifications";
 import { Experiences } from "@/features/profile/components/experiences";
 import { Gallery } from "@/features/profile/components/gallery";
+import { GitHubContributions } from "@/features/profile/components/github-contributions";
 import { Overview } from "@/features/profile/components/overview";
 import { ProfileCover } from "@/features/profile/components/profile-cover";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
@@ -38,6 +39,9 @@ export default function Page() {
         <Separator />
 
         <About />
+        <Separator />
+
+        <GitHubContributions />
         <Separator />
 
         <TeckStack />

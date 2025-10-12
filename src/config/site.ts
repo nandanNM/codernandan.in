@@ -33,3 +33,5 @@ export const UTM_PARAMS = {
   utm_medium: "portfolio_website",
   utm_campaign: "referral",
 };
+
+export const GITHUB_USERNAME = "nandanNM";
