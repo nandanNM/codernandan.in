@@ -1,12 +1,12 @@
 import dayjs from "dayjs";
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
-import CTA from "@/components/landing/CTA";
 import { USER } from "@/data/user";
 import { About } from "@/features/profile/components/about";
 // import { Awards } from "@/features/profile/components/awards";
 import { Blog } from "@/features/profile/components/blog";
 import { Certifications } from "@/features/profile/components/certifications";
+import CTA from "@/features/profile/components/cta/CTA";
 import { Experiences } from "@/features/profile/components/experiences";
 import { Gallery } from "@/features/profile/components/gallery";
 import { GitHubContributions } from "@/features/profile/components/github-contributions";

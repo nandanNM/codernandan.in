@@ -7,14 +7,14 @@ import { useEffect, useState } from "react";
 import { ctaConfig } from "@/config/cta";
 import { useHapticFeedback } from "@/hooks/use-haptic-feedback";
 
-import Container from "../common/Container";
+import Container from "../../../../components/common/Container";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "../ui/dialog";
+} from "../../../../components/ui/dialog";
 
 interface CallToActionProps {
   profileImage?: string;
@@ -62,8 +62,8 @@ export default function CTA({
 
   return (
     <>
-      <Container className="rounded-md border border-dashed border-black/20 py-8 dark:border-white/10">
-        <div className="mt-6 w-full flex-col px-6 pb-8 sm:flex sm:items-center sm:justify-between sm:px-12">
+      <Container className="border-x border-edge">
+        <div className="screen-line-before screen-line-after w-full flex-col px-6 py-3 pb-8 sm:flex sm:items-center sm:justify-between sm:px-12">
           <p className="mb-4 text-center text-base opacity-50 sm:mb-3 md:text-xl">
             {preText}
           </p>

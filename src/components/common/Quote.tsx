@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 import { quotes } from "@/config/quote";
 
-import Container from "./Container";
-
 export const Quote = () => {
   const [currentQuote, setCurrentQuote] = useState<{
     quote: string;
@@ -22,8 +20,8 @@ export const Quote = () => {
   const { quote, author } = currentQuote;
 
   return (
-    <Container className="border-x border-edge">
-      <div className="screen-line-before relative mx-auto px-4 py-10 pt-4 md:max-w-3xl">
+    <div className="max-w-screen overflow-x-hidden px-2">
+      <div className="screen-line-before relative mx-auto border-x px-4 py-10 pt-4 md:max-w-3xl">
         <svg
           aria-hidden="true"
           width="105"
@@ -39,6 +37,6 @@ export const Quote = () => {
           — {author}
         </p>
       </div>
-    </Container>
+    </div>
   );
 };
