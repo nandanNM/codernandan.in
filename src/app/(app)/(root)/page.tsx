@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
+import CTA from "@/components/landing/CTA";
 import { USER } from "@/data/user";
 import { About } from "@/features/profile/components/about";
 // import { Awards } from "@/features/profile/components/awards";
@@ -27,7 +28,7 @@ export default function Page() {
         }}
       />
 
-      <div className="mx-auto md:max-w-3xl">
+      <div className="animate-fade-in-blur mx-auto md:max-w-3xl">
         <ProfileCover />
         <ProfileHeader />
         <Separator />
@@ -60,6 +61,8 @@ export default function Page() {
         {/* <Separator /> */}
 
         <Certifications />
+        <Separator />
+        <CTA />
         <Separator />
         <Gallery />
         <Separator />
