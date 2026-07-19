@@ -38,7 +38,19 @@ function PanelTitle({
   return (
     <Comp
       data-slot="panel-title"
-      className={cn("text-3xl font-semibold", className)}
+      className={cn("group/panel-title text-3xl font-semibold", className)}
+      {...props}
+    />
+  );
+}
+
+function PanelTitleSup({ className, ...props }: React.ComponentProps<"sup">) {
+  return (
+    <sup
+      className={cn(
+        "top-[-0.75em] ml-1 text-sm font-medium tracking-normal text-muted-foreground",
+        className
+      )}
       {...props}
     />
   );
@@ -50,4 +62,4 @@ function PanelContent({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-export { Panel, PanelContent, PanelHeader, PanelTitle };
+export { Panel, PanelContent, PanelHeader, PanelTitle, PanelTitleSup };

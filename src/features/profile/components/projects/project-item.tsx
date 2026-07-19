@@ -35,7 +35,7 @@ export function ProjectItem({
   return (
     <Collapsible defaultOpen={project.isExpanded} asChild>
       <div className={className}>
-        <div className="flex items-center">
+        <div className="group/project-card flex items-center transition-[background-color] ease-out hover:bg-accent/50">
           {project.logo ? (
             <Image
               src={project.logo}
@@ -43,16 +43,16 @@ export function ProjectItem({
               width={32}
               height={32}
               quality={100}
-              className="mx-4 flex size-6 shrink-0 select-none"
+              className="mx-4 flex size-6 shrink-0 grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.42,0,0.58,1)] select-none group-hover/project-card:grayscale-0"
               unoptimized
               aria-hidden="true"
             />
           ) : (
             <div
-              className="mx-4 flex size-6 shrink-0 items-center justify-center text-muted-foreground select-none"
+              className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-md border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background select-none [&_svg]:size-4"
               aria-hidden="true"
             >
-              <Icons.project className="size-5" />
+              <Icons.project />
             </div>
           )}
 

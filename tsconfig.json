@@ -37,6 +37,10 @@
   ],
   "exclude": [
     "node_modules",
-    "./src/__registry__"
+    "./src/__registry__",
+    "chanhdai.com",
+    "demo-3",
+    "sahilcodex",
+    "sleek-portfolio"
   ]
 }

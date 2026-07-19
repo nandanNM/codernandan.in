@@ -31,6 +31,7 @@ export function ScrollTop({
       className={cn(
         "[--bottom:1rem] lg:[--bottom:2rem]",
         "fixed right-4 bottom-[calc(var(--bottom,1rem)+env(safe-area-inset-bottom,0px))] z-50 lg:right-8",
+        "rounded-xl bg-[#494d57] text-white ring-1 ring-border ring-offset-2 ring-offset-background hover:bg-[#494d57] dark:bg-[#494d57] dark:hover:bg-[#494d57]",
         "duration-300 data-[scroll-direction=down]:opacity-30 data-[scroll-direction=up]:opacity-100 data-[visible=false]:opacity-0",
         className
       )}

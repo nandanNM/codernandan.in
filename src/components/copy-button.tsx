@@ -1,9 +1,11 @@
 "use client";
 
 import { CheckIcon, CircleXIcon, CopyIcon } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import * as motion from "motion/react-m";
 import React, { useOptimistic, useTransition } from "react";
 
+import { useCopySound } from "@/hooks/use-copy-sound";
 import { cn } from "@/lib/utils";
 
 import { Button } from "./ui/button";
@@ -23,14 +25,18 @@ export const motionIconProps = {
 
 export function CopyButton({
   value,
+  idleIcon,
   className,
+  onCopySuccess,
   ...props
 }: {
-  value: string;
-  className?: string;
-}) {
+  value: string | (() => string);
+  idleIcon?: React.ReactNode;
+  onCopySuccess?: (value: string) => void;
+} & Omit<React.ComponentProps<typeof Button>, "value" | "children">) {
   const [state, setState] = useOptimistic<"idle" | "copied" | "failed">("idle");
   const [, startTransition] = useTransition();
+  const playCopySound = useCopySound();
 
   return (
     <Button
@@ -39,9 +45,12 @@ export function CopyButton({
       className={cn("z-10 size-6 rounded-md", className)}
       onClick={() => {
         startTransition(async () => {
+          const finalValue = typeof value === "function" ? value() : value;
           try {
             setState("copied");
-            await navigator.clipboard.writeText(value);
+            await navigator.clipboard.writeText(finalValue);
+            playCopySound();
+            onCopySuccess?.(finalValue);
           } catch {
             setState("failed");
           }
@@ -53,7 +62,7 @@ export function CopyButton({
       <AnimatePresence mode="popLayout" initial={false}>
         {state === "idle" ? (
           <motion.span key="idle" {...motionIconProps}>
-            <CopyIcon className="size-3" />
+            {idleIcon ?? <CopyIcon className="size-3" />}
           </motion.span>
         ) : state === "copied" ? (
           <motion.span key="copied" {...motionIconProps}>

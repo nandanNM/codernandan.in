@@ -1,73 +1,149 @@
 import Image from "next/image";
 import React from "react";
 
-import { SimpleTooltip } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 import { TECH_STACK } from "../data/tech-stack";
-import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel";
+import type { TechStack as TechStackType } from "../types/tech-stack";
+import { Panel, PanelHeader, PanelTitle } from "./panel";
+import { PanelTitleCopy } from "./panel-title-copy";
+
+const ID = "stack";
+const ICON_CDN = "https://assets.codernandan.in/images/tech-stack-icons";
 
 export function TeckStack() {
   return (
-    <Panel id="stack">
+    <Panel id={ID}>
       <PanelHeader>
-        <PanelTitle>Stack</PanelTitle>
+        <PanelTitle>
+          <a href={`#${ID}`}>Stack</a>
+          <PanelTitleCopy id={ID} />
+        </PanelTitle>
       </PanelHeader>
 
-      <PanelContent
-        className={cn(
-          "[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5",
-          "bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center",
-          "bg-zinc-950/0.75 dark:bg-white/0.75"
-        )}
-      >
-        <ul className="flex flex-wrap gap-4 select-none">
-          {TECH_STACK.map((tech) => {
+      <div className="relative [--badge-height:--spacing(6)] [--col-left-width:--spacing(48)]">
+        <div
+          className="pointer-events-none absolute inset-y-0 left-(--col-left-width) -z-1 w-px bg-[linear-gradient(to_bottom,var(--edge)_4px,transparent_2px)] bg-size-[1px_6px] bg-repeat-y max-sm:hidden"
+          aria-hidden
+        />
+
+        {Object.entries(groupByCategory(TECH_STACK)).map(
+          ([category, items], index) => {
+            const categoryId = `${ID}-${category
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/(^-|-$)/g, "")}`;
+
             return (
-              <li key={tech.key} className="flex">
-                <SimpleTooltip content={tech.title}>
-                  <a
-                    href={tech.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={tech.title}
+              <div
+                key={category}
+                className="grid items-start gap-y-2 border-b border-edge py-4 last:border-none sm:grid-cols-[var(--col-left-width)_1fr]"
+              >
+                <div
+                  id={categoryId}
+                  className="pl-4 text-sm/(--badge-height) text-muted-foreground"
+                >
+                  <span
+                    className="mr-1.5 font-mono text-muted-foreground/50 select-none"
+                    aria-hidden
                   >
-                    {tech.theme ? (
-                      <>
-                        <Image
-                          src={`https://assets.codernandan.in/images/tech-stack-icons/${tech.key}-light.svg`}
-                          alt={`${tech.title} light icon`}
-                          width={32}
-                          height={32}
-                          className="hidden [html.light_&]:block"
-                          unoptimized
-                        />
-                        <Image
-                          src={`https://assets.codernandan.in/images/tech-stack-icons/${tech.key}-dark.svg`}
-                          alt={`${tech.title} dark icon`}
-                          width={32}
-                          height={32}
-                          className="hidden [html.dark_&]:block"
-                          unoptimized
-                        />
-                      </>
-                    ) : (
-                      <Image
-                        src={`https://assets.codernandan.in/images/tech-stack-icons/${tech.key}.svg`}
-                        alt={`${tech.title} icon`}
-                        width={32}
-                        height={32}
-                        unoptimized
-                      />
-                    )}
-                    <span className="sr-only">{tech.title}</span>
-                  </a>
-                </SimpleTooltip>
-              </li>
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
+                  {category}
+                </div>
+
+                <ul
+                  aria-labelledby={categoryId}
+                  className="flex flex-wrap gap-1.5 px-4"
+                >
+                  {items.map((item) => {
+                    return (
+                      <li key={item.key} className="flex">
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={item.title}
+                          className="flex h-(--badge-height) items-center justify-center gap-1.25 rounded-full bg-zinc-50/80 px-2 font-mono text-xs text-foreground inset-ring-1 inset-ring-border dark:bg-zinc-900/80"
+                        >
+                          <TechStackIcon item={item} />
+                          {item.title}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             );
-          })}
-        </ul>
-      </PanelContent>
+          }
+        )}
+      </div>
     </Panel>
   );
+}
+
+function TechStackIcon({ item }: { item: TechStackType }) {
+  const base = "size-3.5 shrink-0 grayscale";
+
+  if (item.iconUrl) {
+    return (
+      <Image
+        src={item.iconUrl}
+        alt=""
+        aria-hidden
+        width={14}
+        height={14}
+        className={base}
+        unoptimized
+      />
+    );
+  }
+
+  if (item.theme) {
+    return (
+      <>
+        <Image
+          src={`${ICON_CDN}/${item.key}-light.svg`}
+          alt=""
+          aria-hidden
+          width={14}
+          height={14}
+          className={cn(base, "hidden [html.light_&]:block")}
+          unoptimized
+        />
+        <Image
+          src={`${ICON_CDN}/${item.key}-dark.svg`}
+          alt=""
+          aria-hidden
+          width={14}
+          height={14}
+          className={cn(base, "hidden [html.dark_&]:block")}
+          unoptimized
+        />
+      </>
+    );
+  }
+
+  return (
+    <Image
+      src={`${ICON_CDN}/${item.key}.svg`}
+      alt=""
+      aria-hidden
+      width={14}
+      height={14}
+      className={base}
+      unoptimized
+    />
+  );
+}
+
+function groupByCategory(
+  items: TechStackType[]
+): Record<string, TechStackType[]> {
+  return items.reduce<Record<string, TechStackType[]>>((acc, item) => {
+    for (const category of item.categories) {
+      (acc[category] ??= []).push(item);
+    }
+    return acc;
+  }, {});
 }

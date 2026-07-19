@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { DesktopNav } from "@/components/desktop-nav";
 import { MobileNav } from "@/components/mobile-nav";
-import { NavItemGitHub } from "@/components/nav-item-github";
 import { ToggleTheme } from "@/components/toggle-theme";
+import { Separator } from "@/components/ui/separator";
 import { MAIN_NAV } from "@/config/site";
 import { getAllPosts } from "@/data/blog";
 import { cn } from "@/lib/utils";
@@ -21,7 +21,7 @@ export function SiteHeader() {
   return (
     <SiteHeaderWrapper
       className={cn(
-        "sticky top-0 z-50 max-w-screen overflow-x-hidden px-2 pt-2 backdrop-blur-sm",
+        "sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2",
         "data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]/80",
         "not-dark:data-[affix=true]:**:data-header-container:after:bg-border",
         "transition-shadow duration-300"
@@ -35,14 +35,21 @@ export function SiteHeader() {
           <SiteHeaderMark />
         </Link>
 
-        <div className="h-full flex-1 border-x border-edge sm:-ml-2" />
+        <div className="flex-1" />
 
         <DesktopNav items={MAIN_NAV} />
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center">
+          <Separator
+            orientation="vertical"
+            className="mr-2 data-[orientation=vertical]:h-5 data-[orientation=vertical]:self-center max-sm:hidden"
+          />
           <CommandMenu posts={posts} />
-          <NavItemGitHub />
-          <ToggleTheme />
+          <Separator
+            orientation="vertical"
+            className="mx-2 data-[orientation=vertical]:h-5 data-[orientation=vertical]:self-center"
+          />
+          <ToggleTheme enableHotkey />
           <MobileNav className="sm:hidden" items={MAIN_NAV} />
         </div>
       </div>

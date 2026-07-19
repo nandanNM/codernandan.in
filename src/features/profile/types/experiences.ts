@@ -23,6 +23,9 @@ export type Experience = {
   id: string;
   companyName: string;
   companyLogo?: string;
+  companyWebsite?: string;
+  location?: string;
+  locationType?: "On-site" | "Hybrid" | "Remote";
   positions: ExperiencePosition[];
   isCurrentEmployer?: boolean;
 };

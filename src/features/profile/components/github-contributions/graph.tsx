@@ -33,7 +33,7 @@ export function GitHubContributionGraph({
       data={data}
       blockSize={11}
       blockMargin={3}
-      blockRadius={0}
+      blockRadius={2}
     >
       <ContributionGraphCalendar
         className="no-scrollbar px-2"
@@ -63,19 +63,16 @@ export function GitHubContributionGraph({
 
       <ContributionGraphFooter className="px-2">
         <ContributionGraphTotalCount>
-          {({ totalCount, year }) => (
-            <div className="text-muted-foreground">
-              {totalCount.toLocaleString("en")} contributions in {year} on{" "}
-              <a
-                className="font-medium underline underline-offset-4"
-                href={`https://github.com/${GITHUB_USERNAME}`}
-                target="_blank"
-                rel="noopener"
-              >
-                GitHub
-              </a>
-              .
-            </div>
+          {({ totalCount }) => (
+            <a
+              className="text-muted-foreground transition-colors hover:text-foreground"
+              href={`https://github.com/${GITHUB_USERNAME}`}
+              target="_blank"
+              rel="noopener"
+            >
+              {totalCount.toLocaleString("en")} contributions in the past 365
+              days.
+            </a>
           )}
         </ContributionGraphTotalCount>
 

@@ -7,19 +7,12 @@ import {
 import { UTM_PARAMS } from "@/config/site";
 import { addQueryParams } from "@/utils/url";
 
-import { IntroItem } from "./intro-item";
-
-function getJobIcon(title: string) {
-  if (/(developer|engineer)/i.test(title)) {
-    return CodeXmlIcon;
-  }
-
-  if (/(founder|co-founder)/i.test(title)) {
-    return LightbulbIcon;
-  }
-
-  return BriefcaseBusinessIcon;
-}
+import {
+  IntroItem,
+  IntroItemContent,
+  IntroItemIcon,
+  IntroItemLink,
+} from "./intro-item";
 
 export function JobItem({
   title,
@@ -31,21 +24,30 @@ export function JobItem({
   website: string;
 }) {
   return (
-    <IntroItem
-      icon={getJobIcon(title)}
-      content={
-        <>
-          {title} @
-          <a
-            className="ml-0.5 font-medium underline-offset-4 hover:underline"
-            href={addQueryParams(website, UTM_PARAMS)}
-            target="_blank"
-            rel="noopener"
-          >
-            {company}
-          </a>
-        </>
-      }
-    />
+    <IntroItem className="sm:col-span-2">
+      <IntroItemIcon>{getJobIcon(title)}</IntroItemIcon>
+
+      <IntroItemContent>
+        {title} <span aria-label="at">@</span>
+        <IntroItemLink
+          className="ml-0.5"
+          href={addQueryParams(website, UTM_PARAMS)}
+        >
+          {company}
+        </IntroItemLink>
+      </IntroItemContent>
+    </IntroItem>
   );
+}
+
+function getJobIcon(title: string) {
+  if (/(developer|engineer)/i.test(title)) {
+    return <CodeXmlIcon />;
+  }
+
+  if (/(founder|co-founder)/i.test(title)) {
+    return <LightbulbIcon />;
+  }
+
+  return <BriefcaseBusinessIcon />;
 }

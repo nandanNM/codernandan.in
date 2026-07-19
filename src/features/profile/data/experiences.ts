@@ -1,149 +1,189 @@
 import type { Experience } from "../types/experiences";
 
 export const EXPERIENCES: Experience[] = [
-  //   {
-  //     id: "simplamo",
-  //     companyName: "Simplamo Enterprise JSC",
-  //     companyLogo: "https://assets.codernandan.inhttps://assets.codernandan.in/images/companies/simplamo.webp",
-  //     positions: [
-  //       {
-  //         id: "20f8bfe5-b6a3-4b0d-ac2f-6fccd50d417e",
-  //         title: "Senior Frontend Developer",
-  //         employmentPeriod: {
-  //           start: "10.2022",
-  //         },
-  //         employmentType: "Full-time",
-  //         icon: "code",
-  //         description: `- Develop [AI Chat](https://help.simplamo.com/features/simplamo-ai/ai-chat/guide_simplamo_ai_chat?ref=IN-926722) and [AI Assistant](https://help.simplamo.com/features/simplamo-ai/ai-expert/aiexpert-rockdiscribe?ref=IN-926722) features.
-  // - Develop [Whiteboards](https://help.simplamo.com/features/whiteboard/overview?ref=IN-926722) with real-time collaboration.
-  // - Build and maintain the [Zalo Mini App](https://zalo.me/s/1736112917405511258/) for Simplamo with seamless integration.
-  // - Develop interactive chart and analytics widgets for the [Dashboard](https://help.simplamo.com/features/dashboard/overview) to enhance data visualization.
-  // - Develop and maintain core features to enhance functionality and user experience.
-  // - Ensure UI/UX consistency and adherence to standards.
-  // - Implement robust frontend solutions for web and mobile platforms.
-  // - Analyze technical capabilities and provide optimal solutions.`,
-  //         skills: [
-  //           "TypeScript",
-  //           "Next.js",
-  //           "React Native",
-  //           "MobX",
-  //           "MobX-State-Tree",
-  //           "Tailwind CSS",
-  //           "Dify",
-  //           "Zalo Mini App",
-  //           "Agile",
-  //           "Teamwork",
-  //           "Research",
-  //           "Problem-solving",
-  //         ],
-  //         isExpanded: true,
-  //       },
-  //       {
-  //         id: "cedd7adb-4118-4085-9983-ae00530b49e2",
-  //         title: "UI Design Lead",
-  //         employmentPeriod: {
-  //           start: "10.2022",
-  //         },
-  //         employmentType: "Full-time",
-  //         icon: "design",
-  //         description: `- Ensure UI/UX consistency and high-quality standards.
-  // - Design intuitive, user-focused interfaces aligned with business goals.
-  // - Define and establish a cohesive UI style for Simplamo.`,
-  //         skills: ["Creativity", "UI/UX Design", "Figma"],
-  //       },
-  //     ],
-  //     isCurrentEmployer: true,
-  //   },
-  //   {
-  //     id: "tungtung",
-  //     companyName: "Tung Tung JSC",
-  //     companyLogo: "https://assets.codernandan.in/images/companies/tungtung.webp",
-  //     positions: [
-  //       {
-  //         id: "3e831244-8d8c-41e2-b2ce-7f3946956afd",
-  //         title: "Web Developer",
-  //         employmentPeriod: {
-  //           start: "2020",
-  //           end: "2022",
-  //         },
-  //         employmentType: "Full-time",
-  //         description: `- Built a scalable design system for consistency and efficiency.
-  // - Built a complex rich-text editor based on ProseMirror and Slate for customizable content creation.
-  // - Integrated APIs with the Backend Team to enhance functionality.`,
-  //         icon: "code",
-  //         skills: [
-  //           "React",
-  //           "Redux",
-  //           "Storybook",
-  //           "Lerna",
-  //           "Agile",
-  //           "Teamwork",
-  //           "Research",
-  //         ],
-  //       },
-  //       {
-  //         id: "13bd34c3-db84-4fad-8132-a6c89a42957e",
-  //         title: "Mobile Developer",
-  //         employmentPeriod: {
-  //           start: "2019",
-  //           end: "2020",
-  //         },
-  //         employmentType: "Full-time",
-  //         description: `- Rebuilt the app with React Native for better UX and performance.
-  // - Integrated MoMo and in-app purchases for seamless payments.
-  // - Optimized deployment for staging and production.
-  // - Published on App Store and Google Play, ensuring compliance.`,
-  //         icon: "code",
-  //         skills: [
-  //           "React Native",
-  //           "Redux",
-  //           "MoMo Payment API",
-  //           "App Store",
-  //           "Google Play Store",
-  //           "App Center",
-  //           "Agile",
-  //           "Teamwork",
-  //           "Research",
-  //         ],
-  //       },
-  //       {
-  //         id: "73151add-7adf-4035-a237-b5803ceb5478",
-  //         title: "UI/UX Designer",
-  //         employmentPeriod: {
-  //           start: "2018",
-  //           end: "2019",
-  //         },
-  //         employmentType: "Full-time",
-  //         description: `- Designed a Landing Page for enterprise clients.
-  // - Redesigned the Online Quiz Platform for a modern look on web and mobile.
-  // - Redesigned the Pricing interface for individual customers.
-  // - Enhanced UX by improving usability, navigation, and user flow.`,
-  //         icon: "design",
-  //         skills: ["UI/UX Design", "Sketch"],
-  //       },
-  //     ],
-  //   },
-
+  {
+    id: "careercafe",
+    companyName: "CareerCafe",
+    companyLogo:
+      "https://assets.codernandan.in/images/companies/careercafe.png",
+    location: "India",
+    locationType: "Remote",
+    isCurrentEmployer: true,
+    positions: [
+      {
+        id: "careercafe-founding-engineer",
+        title: "Founding Engineer",
+        employmentPeriod: {
+          start: "06.2026",
+        },
+        employmentType: "Full-time",
+        description: `- Building an AI-powered SQL Rule Engine for a scalable School Management System using FastAPI.
+- Enables dynamic business rule execution, AI-generated feedback, and natural language to SQL rule creation.
+- Built intelligent recommendations for administrators with real-time automation.
+- Designed with FastAPI, PostgreSQL, Redis, Docker, Kubernetes, and modern DevOps practices.
+- Architected for scalability, security, and production-readiness with multi-tenant support.`,
+        icon: "idea",
+        skills: [
+          "FastAPI",
+          "PostgreSQL",
+          "Redis",
+          "Docker",
+          "Kubernetes",
+          "Multi-tenant Architecture",
+          "AI Integration",
+          "DevOps",
+        ],
+        isExpanded: true,
+      },
+      {
+        id: "careercafe-sd-intern",
+        title: "Software Developer Intern — Full Stack & AI Integration",
+        employmentPeriod: {
+          start: "01.2026",
+          end: "07.2026",
+        },
+        employmentType: "Internship",
+        description: `- Engineered full-stack features using React.js and Node.js, improving platform usability.
+- Implemented multi-tenant backend architecture to support multiple user groups efficiently.
+- Developed CSV ingestion pipelines for structured data processing.
+- Integrated Blockly-based visual tools to enhance user interaction.
+- Built scalable APIs and optimized backend workflows.`,
+        icon: "code",
+        skills: [
+          "React.js",
+          "Node.js",
+          "Multi-tenant Architecture",
+          "CSV Pipelines",
+          "Blockly",
+          "REST APIs",
+        ],
+      },
+    ],
+  },
+  {
+    id: "lyzr-ai",
+    companyName: "Lyzr AI",
+    companyLogo: "https://assets.codernandan.in/images/companies/lyzr.png",
+    companyWebsite: "https://www.lyzr.ai",
+    location: "New York, United States",
+    locationType: "Remote",
+    isCurrentEmployer: true,
+    positions: [
+      {
+        id: "lyzr-se-intern",
+        title: "Software Engineer Intern — AI Systems",
+        employmentPeriod: {
+          start: "05.2026",
+        },
+        employmentType: "Internship",
+        description: `- Built Agentic AI applications using Lyzr Studio and production-ready LLM workflows.
+- Developed RAG pipelines with vector search for context-aware AI responses.
+- Integrated APIs, MCP servers, and external tools through agent tool calling.
+- Worked on prompt engineering, agent orchestration, memory, and multi-step reasoning.
+- Collaborated with the Applied/Rapid Dev team to deliver production AI solutions.
+- Contributed to backend development, AI integrations, and scalable system design.`,
+        icon: "code",
+        skills: [
+          "Agentic AI",
+          "Lyzr Studio",
+          "RAG",
+          "Vector Search",
+          "LLM Workflows",
+          "MCP",
+          "Prompt Engineering",
+          "Agent Orchestration",
+        ],
+        isExpanded: true,
+      },
+    ],
+  },
+  {
+    id: "xrovo",
+    companyName: "Xrovo",
+    location: "India",
+    locationType: "Remote",
+    positions: [
+      {
+        id: "xrovo-se-intern",
+        title: "Software Engineering Intern — AI Voice Agent & Test Automation",
+        employmentPeriod: {
+          start: "03.2026",
+          end: "04.2026",
+        },
+        employmentType: "Internship",
+        description: `- Implemented AI Voice Agents for automated interactions.
+- Wrote automation tests using Selenium with Java.
+- Integrated automated tests with Jenkins CI/CD pipelines.
+- Improved testing workflows and automation reliability.`,
+        icon: "code",
+        skills: [
+          "AI Voice Agents",
+          "Selenium",
+          "Java",
+          "Jenkins",
+          "CI/CD",
+          "Test Automation",
+        ],
+      },
+    ],
+  },
+  {
+    id: "slogic",
+    companyName: "SLOGIC",
+    location: "India",
+    locationType: "Remote",
+    positions: [
+      {
+        id: "slogic-se-intern",
+        title: "Software Engineer",
+        employmentPeriod: {
+          start: "12.2025",
+          end: "01.2026",
+        },
+        employmentType: "Freelance",
+        icon: "code",
+      },
+    ],
+  },
+  {
+    id: "growify",
+    companyName: "Growify India",
+    location: "India",
+    locationType: "Remote",
+    positions: [
+      {
+        id: "growify-fullstack-intern",
+        title: "Full Stack Developer",
+        employmentPeriod: {
+          start: "10.2025",
+          end: "12.2025",
+        },
+        employmentType: "Freelance",
+        icon: "code",
+      },
+    ],
+  },
   {
     id: "sparks-sphere",
     companyName: "Sparks Sphere Softwares",
     companyLogo:
       "https://assets.codernandan.in/images/companies/sparks-sphere.webp",
+    companyWebsite: "https://sparksspheresoftwares.in",
+    location: "Kolkata",
+    locationType: "Remote",
     positions: [
       {
         id: "a3c4b5f6-d7e8-49a1-9b10-11c12d13e14f",
-        title: "Software Engineer — Internship",
-
+        title: "Software Engineer",
         employmentPeriod: {
-          start: "Jul 2025",
-          end: "Oct 2025",
+          start: "06.2025",
+          end: "11.2025",
         },
         employmentType: "Internship",
-
-        description: `- Developed a B2B salon management platform with integrated inventory and order tracking features.  
-- Implemented scalable frontend modules using Next.js and React.js, with Redux Toolkit and Redux Saga for state management.  
-- Built secure RESTful APIs with Express.js and Prisma ORM for managing salon branches, products, and stock operations.  
-- Worked on real-time data synchronization between dashboard views for smooth multi-branch management.  
+        description: `- Developed a B2B salon management platform with integrated inventory and order tracking features.
+- Implemented scalable frontend modules using Next.js and React.js, with Redux Toolkit and Redux Saga for state management.
+- Built secure RESTful APIs with Express.js and Prisma ORM for managing salon branches, products, and stock operations.
+- Worked on real-time data synchronization between dashboard views for smooth multi-branch management.
 - Collaborated in an agile remote team, ensuring clean code practices and optimized SQL database performance.`,
         icon: "code",
         skills: [
@@ -163,6 +203,8 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "freelance",
     companyName: "Freelance",
+    location: "India",
+    locationType: "Remote",
     positions: [
       {
         id: "f0becfba-057d-40db-b252-739e1654faa1",
@@ -172,9 +214,9 @@ export const EXPERIENCES: Experience[] = [
           end: "2025",
         },
         employmentType: "Freelance",
-        description: `- Developed an online exam portal for students.  
-- Implemented features to help students fill exam forms, access previous year questions (PYQs), and check results.  
-- Built functionality to generate and print rank cards.  
+        description: `- Developed an online exam portal for students.
+- Implemented features to help students fill exam forms, access previous year questions (PYQs), and check results.
+- Built functionality to generate and print rank cards.
 - Ensured a smooth user experience with secure authentication and role-based access.`,
         icon: "code",
         skills: [
@@ -196,10 +238,10 @@ export const EXPERIENCES: Experience[] = [
           start: "2025",
         },
         employmentType: "Freelance",
-        description: `- Built a full-featured hostel management system to manage meals, payments, and attendance.  
-- Implemented features for meal toggling, banning/unbanning residents, and manager dashboards.  
-- Integrated ShadCN UI components with Next.js for a modern, responsive frontend.  
-- Used PostgreSQL and Prisma ORM for scalable database management.  
+        description: `- Built a full-featured hostel management system to manage meals, payments, and attendance.
+- Implemented features for meal toggling, banning/unbanning residents, and manager dashboards.
+- Integrated ShadCN UI components with Next.js for a modern, responsive frontend.
+- Used PostgreSQL and Prisma ORM for scalable database management.
 - Designed a calendar-based attendance tracking system with React Query for real-time data fetching.`,
         icon: "code",
         skills: [
@@ -224,17 +266,16 @@ export const EXPERIENCES: Experience[] = [
         id: "c47f5903-88ae-4512-8a50-0b91b0cf99b6",
         title: "University of Kalyani — B.Tech",
         employmentPeriod: {
-          start: "09.2023",
+          start: "08.2023",
         },
         icon: "education",
-        description: `- Currently pursuing a Bachelor's degree in Electronics & Instrumentation Engineering.  
-- Learning advanced concepts in circuits, sensors, control systems, and instrumentation.  
-- Alongside academics, developing strong skills in full-stack web development and system design.  
+        description: `- Pursuing a Bachelor's degree in Electronics and Communications Engineering (expected May 2027).
+- Learning advanced concepts in circuits, sensors, control systems, and communication.
+- Alongside academics, developing strong skills in full-stack web development, AI systems, and system design.
 - Actively working on projects that combine software engineering and real-world applications.`,
         skills: [
           "Electronics",
-          "Instrumentation",
-          "Control Systems",
+          "Communications",
           "C++",
           "Java",
           "JavaScript",
@@ -261,9 +302,9 @@ export const EXPERIENCES: Experience[] = [
           end: "06.2023",
         },
         icon: "education",
-        description: `- Completed higher secondary education with 82% marks.  
-- Learned programming fundamentals in C and JavaScript.  
-- Gained an understanding of how applications work and explored various technologies.  
+        description: `- Completed higher secondary education with 82% marks.
+- Learned programming fundamentals in C and JavaScript.
+- Gained an understanding of how applications work and explored various technologies.
 - Built a strong foundation in problem-solving and logical thinking.`,
         skills: [
           "C",
@@ -281,9 +322,9 @@ export const EXPERIENCES: Experience[] = [
           end: "03.2021",
         },
         icon: "education",
-        description: `- Learned through self-study and exploration, developing curiosity for computers and technology.  
-- Participated in school-level football tournaments, achieving **1st position** with the team.  
-- Selected for a school science program where I learned basic computer operations and Linux.  
+        description: `- Learned through self-study and exploration, developing curiosity for computers and technology.
+- Participated in school-level football tournaments, achieving **1st position** with the team.
+- Selected for a school science program where I learned basic computer operations and Linux.
 - Built a strong foundation for future learning through curiosity-driven exploration.`,
         skills: [
           "Linux Basics",

@@ -30,7 +30,7 @@ export function AwardItem({
   return (
     <Collapsible disabled={!canExpand} asChild>
       <div className={className}>
-        <div className="flex items-center">
+        <div className="group/award-card flex items-center transition-[background-color] ease-out hover:bg-accent/50">
           <div
             className="mx-4 flex size-6 shrink-0 items-center justify-center text-muted-foreground"
             aria-hidden

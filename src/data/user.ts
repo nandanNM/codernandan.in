@@ -13,6 +13,7 @@ export const USER = {
     "Open Source Contributor",
   ],
   address: "Kalyani Ward, Nadia District, West Bengal",
+  timeZone: "Asia/Kolkata",
   phoneNumber: "KzkxODUwOTczNjU4NQ==", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
   email: "Y29kZXJuYW5kYW5AZ21haWwuY29t", // base64 encoded
   website: "https://codernandan.in",
@@ -42,7 +43,29 @@ Currently, I’m exploring advanced system designs, scalable architectures, and 
 
 Let’s connect and build something amazing together!
 `,
+  hero: {
+    intro:
+      "Hey, I'm Nandan, a full-stack developer who loves building clean, scalable websites and apps where design, functionality, and even the smallest details matter, with a focus on making products that are both practical and visually satisfying.",
+    current: {
+      pre: "I'm currently working on my own thing ",
+      project: {
+        name: "LeetMaster",
+        href: "https://leetmaster.in",
+      },
+      post: ", helping learners master coding challenges through structured practice.",
+    },
+  },
   avatar: "https://assets.codernandan.in/images/codernandan-avatar-ghibli.webp",
+  // Avatars cycled by the switch button in the profile header (first = default).
+  // `zoom`/`origin` crop portrait photos in on the face.
+  avatars: [
+    {
+      src: "https://assets.codernandan.in/images/codernandan-avatar-ghibli.webp",
+    },
+    {
+      src: "https://assets.codernandan.in/images/codernandan-avatar-2.jpeg",
+    },
+  ] as { src: string; zoom?: number; origin?: string }[],
   ogImage: "https://assets.codernandan.in/images/screenshot-og-image.webp",
   namePronunciationUrl: "https://assets.codernandan.in/audio/nandan-manna.mp3",
   galleryImages: [

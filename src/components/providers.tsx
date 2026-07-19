@@ -10,7 +10,6 @@ import { ThemeProvider } from "next-themes";
 
 import { Toaster } from "@/components/ui/sonner";
 
-// import ChatBubble from "./common/ChatBubble";
 import OnekoCat from "./common/OnekoCat";
 
 const loadFeatures = () => import("motion/react").then((res) => res.domMax);
@@ -40,7 +39,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <Toaster />
         <Analytics />
         <SpeedInsights />
-        {/* <ChatBubble /> */}
         <GoogleAnalytics gaId="G-XSRMVN6E43" />
       </ReactLenis>
     </ThemeProvider>

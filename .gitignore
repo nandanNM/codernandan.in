@@ -42,3 +42,13 @@ next-env.d.ts
 
 # ncdai
 .ncdai
+
+# Claude Code working files
+.claude/
+.playwright-mcp/
+
+# local reference repos (not part of this project)
+/chanhdai.com/
+/demo-3/
+/sahilcodex/
+/sleek-portfolio/

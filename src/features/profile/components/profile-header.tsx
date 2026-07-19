@@ -1,94 +1,190 @@
+"use client";
+
+import * as motion from "motion/react-m";
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import { FlipSentences } from "@/components/flip-sentences";
+import { Icons } from "@/components/icons";
 import { SimpleTooltip } from "@/components/ui/tooltip";
+import { VisitorCount } from "@/components/visitor-count";
 import { USER } from "@/data/user";
+import soundManager from "@/lib/sound-manager";
 import { cn } from "@/lib/utils";
 
 import { PronounceMyName } from "./pronounce-my-name";
 import { VerifiedIcon } from "./verified-icon";
 
-export function ProfileHeader() {
-  return (
-    <div className="screen-line-after flex border-x border-edge">
-      <div className="shrink-0 border-r border-edge">
-        <div className="mx-[2px] my-[3px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="size-32 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
-            alt={`${USER.displayName}'s avatar`}
-            src={USER.avatar}
-            fetchPriority="high"
-          />
-        </div>
+const GLITCH_SOUND_URL =
+  "https://assets.codernandan.in/audio/ui-sounds/glitch.wav";
+const GLITCH_DURATION = 700;
+const GLITCH_SWAP_AT = 280;
 
-        {/* Flag of Viet Nam */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 300 200"
-          className="absolute top-0 -left-px h-8 sm:h-9"
-        >
-          <rect width="300" height="200" fill="#FFFFFF" />
-          <rect width="300" height="66.6667" y="0" fill="#FF9933" />
-          <rect width="300" height="66.6667" y="133.3333" fill="#138808" />
-          <g transform="translate(150,100)" fill="none" stroke="#000080">
-            <circle r="24" strokeWidth="2" />
-            <circle r="3" strokeWidth="2" fill="#000080" />
-            <defs>
-              <line
-                id="spoke"
-                x1="0"
-                y1="3"
-                x2="0"
-                y2="-24"
-                stroke="#000080"
-                strokeWidth="1.5"
-              />
-            </defs>
-            <g>
-              {Array.from({ length: 24 }).map((_, i) => (
-                <use key={i} href="#spoke" transform={`rotate(${i * 15})`} />
-              ))}
-            </g>
-          </g>
-        </svg>
+function AvatarImage({
+  avatar,
+  priority,
+}: {
+  avatar: (typeof USER.avatars)[number];
+  priority?: boolean;
+}) {
+  return (
+    <Image
+      className="size-full object-cover object-top brightness-100 transition-[filter] duration-500 ease-out dark:brightness-[0.78] dark:contrast-[0.97]"
+      style={
+        avatar.zoom
+          ? {
+              transform: `scale(${avatar.zoom})`,
+              transformOrigin: avatar.origin,
+            }
+          : undefined
+      }
+      src={avatar.src}
+      alt={`${USER.displayName}'s avatar`}
+      width={224 * Math.ceil(avatar.zoom ?? 1)}
+      height={224 * Math.ceil(avatar.zoom ?? 1)}
+      quality={90}
+      priority={priority}
+    />
+  );
+}
+
+export function ProfileHeader() {
+  const [avatarIndex, setAvatarIndex] = useState(0);
+  const [glitching, setGlitching] = useState(false);
+  const glitchTimeouts = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  const toggleAvatar = useCallback(() => {
+    if (glitchTimeouts.current.length > 0) return; // already glitching
+
+    soundManager.playAudio(GLITCH_SOUND_URL);
+    setGlitching(true);
+
+    glitchTimeouts.current = [
+      setTimeout(() => {
+        setAvatarIndex((index) => (index + 1) % USER.avatars.length);
+      }, GLITCH_SWAP_AT),
+      setTimeout(() => {
+        setGlitching(false);
+        glitchTimeouts.current = [];
+      }, GLITCH_DURATION),
+    ];
+  }, []);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() !== "p") return;
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+
+      const target = e.target as HTMLElement;
+      if (
+        target.isContentEditable ||
+        ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName)
+      ) {
+        return;
+      }
+
+      e.preventDefault();
+      toggleAvatar();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [toggleAvatar]);
+
+  useEffect(() => {
+    const timeouts = glitchTimeouts.current;
+    return () => {
+      timeouts.forEach(clearTimeout);
+    };
+  }, []);
+
+  const activeAvatar = USER.avatars[avatarIndex];
+
+  return (
+    <div className="screen-line-after flex items-center gap-4 border-x border-edge p-4 sm:gap-6">
+      <div
+        className={cn(
+          "relative size-24 shrink-0 overflow-hidden rounded-2xl ring-1 ring-border select-none sm:size-28",
+          glitching && "avatar-glitch-base"
+        )}
+      >
+        {USER.avatars.map((avatar, index) => (
+          <motion.div
+            key={avatar.src}
+            className="absolute inset-0"
+            initial={false}
+            animate={{ opacity: index === avatarIndex ? 1 : 0 }}
+            transition={{ duration: 0.1 }}
+          >
+            <AvatarImage avatar={avatar} priority={index === 0} />
+          </motion.div>
+        ))}
+
+        {glitching && (
+          <>
+            <div className="avatar-glitch-layer avatar-glitch-r" aria-hidden>
+              <AvatarImage avatar={activeAvatar} />
+            </div>
+            <div className="avatar-glitch-layer avatar-glitch-c" aria-hidden>
+              <AvatarImage avatar={activeAvatar} />
+            </div>
+          </>
+        )}
       </div>
 
-      <div className="flex flex-1 flex-col">
-        <div
-          className={cn(
-            "flex grow items-end pb-1 pl-4",
-            "bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56"
+      <div className="flex flex-1 flex-col gap-1">
+        {USER.avatars.length > 1 && (
+          <SimpleTooltip
+            content={
+              <span className="flex items-center gap-1.5">
+                Toggle Avatar
+                <kbd className="inline-flex h-4 min-w-4 items-center justify-center rounded-sm bg-primary-foreground/20 px-1 font-sans text-[11px] font-medium">
+                  P
+                </kbd>
+              </span>
+            }
+          >
+            <button
+              className="mb-1 flex size-5 cursor-pointer items-center justify-center self-start text-muted-foreground transition-[color,scale] select-none hover:text-foreground active:scale-90"
+              aria-label="Toggle avatar"
+              onClick={toggleAvatar}
+            >
+              <Icons.contrast
+                className={cn(
+                  "size-4.5 transition-transform duration-500 ease-out",
+                  avatarIndex % 2 === 1 && "rotate-180"
+                )}
+              />
+            </button>
+          </SimpleTooltip>
+        )}
+
+        <h1 className="flex items-center text-2xl font-semibold sm:text-3xl">
+          {USER.displayName}
+          &nbsp;
+          <SimpleTooltip content="Verified">
+            <VerifiedIcon className="size-[0.6em] translate-y-px text-foreground select-none" />
+          </SimpleTooltip>
+          {USER.namePronunciationUrl && (
+            <>
+              &nbsp;
+              <PronounceMyName
+                className="translate-y-px"
+                namePronunciationUrl={USER.namePronunciationUrl}
+              />
+            </>
           )}
-        >
-          <div className="line-clamp-1 font-mono text-xs text-zinc-300 select-none max-sm:hidden dark:text-zinc-800">
-            {"text-3xl "}
-            <span className="inline dark:hidden">text-zinc-950</span>
-            <span className="hidden dark:inline">text-zinc-50</span>
-            {" font-medium"}
-          </div>
-        </div>
+        </h1>
 
-        <div className="border-t border-edge">
-          <h1 className="flex items-center pl-4 text-3xl font-semibold">
-            {USER.displayName}
-            &nbsp;
-            <SimpleTooltip content="Verified">
-              <VerifiedIcon className="size-[0.6em] translate-y-px text-info select-none" />
-            </SimpleTooltip>
-            {USER.namePronunciationUrl && (
-              <>
-                &nbsp;
-                <PronounceMyName
-                  className="translate-y-px"
-                  namePronunciationUrl={USER.namePronunciationUrl}
-                />
-              </>
-            )}
-          </h1>
-
-          <div className="h-12 border-t border-edge py-1 pl-4 sm:h-auto">
-            <FlipSentences sentences={USER.flipSentences} />
-          </div>
+        <div className="text-muted-foreground">
+          <FlipSentences sentences={USER.flipSentences} />
         </div>
+      </div>
+
+      <div className="flex flex-col items-end self-start">
+        <VisitorCount />
       </div>
     </div>
   );
