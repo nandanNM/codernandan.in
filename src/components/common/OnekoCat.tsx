@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { catConfig } from "@/config/cat";
 
 const CAT_SPRITES = [
+  "./oneko/oneko-nandan.gif",
   "./oneko/oneko.gif",
   "./oneko/oneko-maia.gif",
   "./oneko/oneko-tora.gif",
